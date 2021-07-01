@@ -1,0 +1,18 @@
+a{
+    text-decoration: none;
+}
+span{
+    color:red;
+ }
+ input.ng-invalid.ng-touched{
+    border-color:red;
+ }
+ textarea.ng-invalid.ng-touched{
+    border-color:red;
+ }
+ button:disabled{
+     cursor:no-drop;
+ }
+ th{
+    padding: 10px;
+}

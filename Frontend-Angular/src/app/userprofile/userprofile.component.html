@@ -1,0 +1,184 @@
+<div style="margin-top: 89px;" >
+<div class="container-fluid">
+    <div class="form-gap"></div>
+<div class="login-form">
+<div class="col-md-8">
+    <div class="card mb-3">
+        <h2 style="margin-top: 20px;margin-left: 20px;">User Profile</h2>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Full Name:</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{Purposaldata.fName}} {{Purposaldata.lName}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email:</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{Purposaldata.email}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Company:</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{Purposaldata.companyName}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Purpose of Insurance:</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{Purposaldata.purpose}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Amount to be Insured:</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{Purposaldata.amount | currency:'INR'}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Brief Description:</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{Purposaldata.description}}
+            </div>
+          </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Documents:</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                <i class="fa fa-file"></i>
+            </div>
+          </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Current Status of Application:</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                <div class="row px-3">
+                    <div class="col">
+                        <ul>
+                          <div class="row">
+                            <li>Under Review</li>
+                            <li style="padding-left: 170px;">In Progress</li>
+                            <li style="padding-left: 170px;">Completed</li>
+                          </div>
+                            <div class="progress" style="margin-top: 10px;" *ngIf="inReviewBar && inCompletedBar">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                            </div>
+                            <div class="progress" style="margin-top: 10px;" *ngIf="!inReviewBar">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                            </div>
+                            <div class="progress" style="margin-top: 10px;" *ngIf="inReviewBar && inProgressBar">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <hr>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    <footer class="footer-area section_gap">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-7 single-footer-widget">
+              <h4 style="margin-left: 10px;">CONTACT US</h4>
+              <table>
+                <tr>
+                  <th>
+                <i class="fa fa-map-marker fa-2x" style="color: white;"></i>
+                  </th>
+                  <th>
+                    <h6 style="color: white;">E-221,
+                      Phase 8B Industrial Area, Mohali,<span style="color: white;font-weight: bold;">Punjab INDIA, 160059</span></h6>
+                </th>
+                </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-phone fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;">+91 98550 78699,+91 172 4008460</h6>
+                  </th>
+               </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-envelope fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;"><a href="www.gmail.com">info@antiersolutions.com</a></h6>
+                 </th>
+               </tr>
+             </table>
+            </div>
+           
+            <div class="col-lg-4 col-md-6 single-footer-widget" style="margin-left:80px;">
+              <h4>NEWSLETTER</h4>
+              <p>You can trust us. we only send promo offers,</p>
+              <div class="form-wrap" id="mc_embed_signup">
+                <form  class="form-inline" #SubscribedForm="ngForm" (ngSubmit)="onSubmitt(SubscribedForm)">
+                  <input class="form-control" id="EMAIL" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''"onblur="this.placeholder = 'Your Email Address '" required="" type="email" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="contactservice.selectedSubscribed.EMAIL"  autocomplete="off" required email>
+                  <span *ngIf="EMAIL.invalid && (EMAIL.dirty || EMAIL.touched)">
+                    </span>
+                  <button class="click-btn btn btn-default" [disabled]="!SubscribedForm.valid">Subscribe</button>
+                  <div style="position: absolute; left: -5000px;">
+                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                  </div>
+                  <div class="info"></div>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-7 single-footer-widget" style="margin-left: 80px;">
+              <h4>ABOUT</h4>
+              <table>
+                <tr>
+                  <td>
+                    <p>For over 10 years, Antier is helping businesses to adopt new technologies to stay ahead of change. Our rigorous research, design thinking-driven approach and unmatched solutions in strategy, consulting, technology and operations create an innovative roadmap to help enterprises worldwide transit from conventional technology platforms to blockchain-driven systems. We are driven by the aim to identify and seize opportunities from disruption to deliver transformational outcomes for a new decentralized digital world.</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          
+          </div>
+
+          <div class="footer-bottom row align-items-center">
+            <p class="footer-text m-0 col-lg-8 col-md-12">
+              &copy;Copyright 2021 Antier Solutions Pvt. Ltd. | This website is designed <i class="fa fa-heart-o" aria-hidden="true"></i> by <a>Mukul Sharma</a></p>
+            <div class="col-lg-4 col-md-12 footer-social">
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+              <a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a>
+              <a href="https://gmail.com/"><i class="fa fa-google"></i></a>
+              <a href="https://instagram.com/"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+          
+        </div>
+      </footer>

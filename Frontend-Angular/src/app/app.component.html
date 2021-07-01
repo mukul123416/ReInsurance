@@ -1,0 +1,34 @@
+<div class="bs-example">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" style="padding: 20px;">
+        <a class="navbar-brand logo_h" [routerLink]="['/Home']">
+            <img src="assets/img/logo.png" alt="" />
+          </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a [routerLink]="['/Home']" class="nav-item nav-link active">HOME</a>
+
+                <a [routerLink]="['/Insurance']" class="nav-item nav-link">INSURANCE</a>
+
+                <a [routerLink]="['/Contact']" class="nav-item nav-link ">CONTACT</a>
+               
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a [routerLink]="['/SignIn']" class="nav-item nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; SignIn</a>
+                <a [routerLink]="['/SignUp']" class="nav-item nav-link"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp; SignUp</a>
+                <a [routerLink]="['/Profile']" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Profile</a>
+            </div>
+        </div>
+    </nav>
+    </div>
+
+    <div style="background-image: url('assets/img/insurance.jpg'); background-repeat: no-repeat;background-attachment: fixed;  
+    background-size: cover;background-size: 100% 100%;">
+    <router-outlet></router-outlet>
+    </div>
+  
+    
+    

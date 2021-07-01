@@ -1,0 +1,168 @@
+<div style="margin-top: 89px;" >
+  <div class="container-fluid">
+  <div class="form-gap"></div>
+  <div class="login-form">
+
+  <form #PurposeForm="ngForm" (ngSubmit)="onSubmitt(PurposeForm)">
+
+    <h2>Create Policy Request</h2>
+    <p style="margin-bottom: 40px;">Please create a request</p>
+
+    <div class="form-row mar">
+
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">First Name</label>
+        <input type="text" class="form-control" name="fName" name="fName" #fName="ngModel" [(ngModel)]="userService.selectedUser.fName" placeholder="fName" required="required" id="inputEmail4">
+        <span *ngIf="fName.invalid && (fName.dirty || fName.touched)">
+        <span *ngIf="fName.errors.required">FirstName is Required!!</span></span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Last Name</label>
+        <input type="text" class="form-control"  name="lName" #lName="ngModel" [(ngModel)]="userService.selectedUser.lName" placeholder="lName" required="required" id="inputPassword4">
+        <span *ngIf="lName.invalid && (lName.dirty || lName.touched)">
+        <span *ngIf="lName.errors.required">LastName is Required!!</span></span>
+      </div>
+
+    </div>
+
+    <div class="form-row mar">
+
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Email</label>
+      <input type="email" class="form-control"  name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email"  placeholder="abc@gmail.com" required="required" email id="inputAddress">
+      <span *ngIf="email.invalid && (email.dirty || email.touched)">
+      <span *ngIf="email.errors.required">Email is Required!!</span>
+      <span *ngIf="email.errors.email">Email is Invalid!!</span></span>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputAddress2">Company</label>
+      <input type="text" class="form-control" id="inputAddress2"  name="companyName" #companyName="ngModel" [(ngModel)]="userService.selectedUser.companyName"  required="required" placeholder="Apartment, studio, or floor">
+      <span *ngIf="companyName.invalid && (companyName.dirty || companyName.touched)">
+      <span *ngIf="companyName.errors.required">CompanyName is Required!!</span></span>
+    </div>
+
+    </div>
+
+    <div class="form-row mar">
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Purpose</label>
+        <input type="text" class="form-control"  name="purpose" #purpose="ngModel" [(ngModel)]="userService.selectedPurpose.purpose" placeholder="Some text.." required="required" id="inputAddress">
+        <span *ngIf="purpose.invalid && (purpose.dirty || purpose.touched)">
+        <span *ngIf="purpose.errors.required">Purpose is Required!!</span></span>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="inputAddress2">Amount</label>
+        <input type="text" class="form-control" id="inputAddress2"  name="amount" #amount="ngModel" [(ngModel)]="userService.selectedPurpose.amount" required="required" minlength="6" maxlength="8" placeholder="">
+        <span *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+          <span *ngIf="amount.errors.required">Amount is Required!!</span>
+          <span *ngIf="amount.errors.minlength">Amount must be at least 6 characters long!!</span>
+          <span *ngIf="amount.errors.maxlength">Amount must be max 8 characters long!!</span></span>
+      </div>
+  
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea id="mytextarea" name="description" #description="ngModel" [(ngModel)]="userService.selectedPurpose.description" class="form-control" id="exampleFormControlTextarea1" required="required" minlength="24" maxlength="250" rows="3"></textarea>
+        <span *ngIf="description.invalid && (description.dirty || description.touched)">
+          <span *ngIf="description.errors.required">Description is Required!!</span>
+          <span *ngIf="description.errors.minlength">Description must be at least 24 characters long!!</span>
+          <span *ngIf="description.errors.maxlength">Description must be max 250 characters long!!</span></span>
+      </div><br>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Documents</label><br>
+        <input type="file" name="documents" #documents="ngModel" [(ngModel)]="userService.selectedPurpose.documents" id="myfile">
+      </div><br>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary login-btn" [disabled]="!PurposeForm.valid">REQUEST</button>
+    </div>
+  </form>
+  </div>
+  </div>
+  </div>
+    
+
+      <footer class="footer-area section_gap">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-7 single-footer-widget">
+              <h4 style="margin-left: 10px;">CONTACT US</h4>
+              <table>
+                <tr>
+                  <th>
+                <i class="fa fa-map-marker fa-2x" style="color: white;"></i>
+                  </th>
+                  <th>
+                    <h6 style="color: white;">E-221,
+                      Phase 8B Industrial Area, Mohali,<span style="color: white;font-weight: bold;">Punjab INDIA, 160059</span></h6>
+                </th>
+                </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-phone fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;">+91 98550 78699,+91 172 4008460</h6>
+                  </th>
+               </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-envelope fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;"><a href="www.gmail.com">info@antiersolutions.com</a></h6>
+                 </th>
+               </tr>
+             </table>
+            </div>
+           
+            <div class="col-lg-4 col-md-6 single-footer-widget" style="margin-left:80px;">
+              <h4>NEWSLETTER</h4>
+              <p>You can trust us. we only send promo offers,</p>
+              <div class="form-wrap" id="mc_embed_signup">
+                <form  class="form-inline" #SubscribedForm="ngForm" (ngSubmit)="onSubmit(SubscribedForm)">
+                  <input class="form-control" id="EMAIL" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''"onblur="this.placeholder = 'Your Email Address '" required="" type="email" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="contactservice.selectedSubscribed.EMAIL"  autocomplete="off" required email>
+                  <span *ngIf="EMAIL.invalid && (EMAIL.dirty || EMAIL.touched)">
+                    </span>
+                  <button class="click-btn btn btn-default" [disabled]="!SubscribedForm.valid">Subscribe</button>
+                  <div style="position: absolute; left: -5000px;">
+                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                  </div>
+                  <div class="info"></div>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-7 single-footer-widget" style="margin-left: 80px;">
+              <h4>ABOUT</h4>
+              <table>
+                <tr>
+                  <td>
+                    <p>For over 10 years, Antier is helping businesses to adopt new technologies to stay ahead of change. Our rigorous research, design thinking-driven approach and unmatched solutions in strategy, consulting, technology and operations create an innovative roadmap to help enterprises worldwide transit from conventional technology platforms to blockchain-driven systems. We are driven by the aim to identify and seize opportunities from disruption to deliver transformational outcomes for a new decentralized digital world.</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          
+          </div>
+
+          <div class="footer-bottom row align-items-center">
+            <p class="footer-text m-0 col-lg-8 col-md-12">
+              &copy;Copyright 2021 Antier Solutions Pvt. Ltd. | This website is designed <i class="fa fa-heart-o" aria-hidden="true"></i> by <a>Mukul Sharma</a></p>
+            <div class="col-lg-4 col-md-12 footer-social">
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+              <a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a>
+              <a href="https://gmail.com/"><i class="fa fa-google"></i></a>
+              <a href="https://instagram.com/"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+          
+        </div>
+      </footer>

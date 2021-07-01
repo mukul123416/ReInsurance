@@ -1,0 +1,168 @@
+<div style="margin-top: 89px;">
+    <div class="container" style="margin-top: 89px;padding:20px;">
+    
+      <div style="margin-bottom: 30px;margin-top: 30px;;" class="row">
+    <button  style="margin-right: 5px;font-weight: bolder;padding: 20px;font-size: 20px;" class="btn btn-primary" [routerLink]="['/Insurance']">Proposal List</button>
+    <button style="font-weight: bold;padding: 10px;font-size: 20px;" class="btn btn-info" [routerLink]="['/Proposed']">Proposed List</button>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="flag3">
+      There is no propsed list !!!
+    </div>
+    
+    <div class="row" *ngIf="!flag3">
+      <div class="col-lg-5 " style="background-color: white;height: 270px;" id="p02">
+        <div style="padding-top: 30px;padding-left: 20px;" class="row">
+        <div class="col-md-6">
+        <p style="color:lightseagreen;margin-bottom: 3px;">Name</p>
+        <h6>{{Purposaldata.fName}} {{Purposaldata.lName}}</h6>
+        </div>
+        <div class="col-md-6">
+          <p style="color:lightseagreen;margin-bottom: 3px;">Company</p>
+          <h6>{{Purposaldata.companyName}}</h6>
+          </div>
+        </div>
+        <div style="padding: 20px;"  class="row">
+          <div class="col-md-6">
+          <p style="color:lightseagreen;margin-bottom: 3px;">Purpose of insurance</p>
+          <h6>{{Purposaldata.purpose}}</h6>
+          </div>
+          <div class="col-md-6">
+            <p style="color:lightseagreen;margin-bottom: 3px;">Amount</p>
+            <h6 style="color:red">{{Purposaldata.amount | currency:'INR'}}</h6>
+            </div>
+            <div style="padding-top: 25px;">
+              <button style="width: 100px;"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Confirm</button>
+            
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">BID</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form #ProposedForm="ngForm" (ngSubmit)="onSubmit(ProposedForm)">
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">Amount:</label>
+                          <input name="amount" #amount="ngModel" [(ngModel)]="userService.selectedProposed.amount" type="text" class="form-control" required="required" minlength="7" maxlength="8" id="recipient-name">
+                          <span *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+                            <span *ngIf="amount.errors.required">Amount is Required!!</span>
+                            <span *ngIf="amount.errors.minlength">Amount must be at least 10Lakh!!</span>
+                            <span *ngIf="amount.errors.maxlength">Amount must be max 1Crore!!</span></span>
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Tenure:</label>
+                          <textarea name="tenure" #tenure="ngModel" [(ngModel)]="userService.selectedProposed.tenure" class="form-control" required="required" id="message-text"></textarea>
+                          <span *ngIf="tenure.invalid && (tenure.dirty || tenure.touched)">
+                            <span *ngIf="tenure.errors.required">Tenure is Required!!</span></span>
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Choose file:</label>
+                          <input name="policyDetails" #policyDetails="ngModel" [(ngModel)]="userService.selectedProposed.policyDetails" required="required"  type="file" class="form-control" id="message-text">
+                          <span *ngIf="policyDetails.invalid && (policyDetails.dirty || policyDetails.touched)">
+                            <span *ngIf="policyDetails.errors.required">Please select a file!!</span></span>
+                        </div>
+                       
+                          <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary" [disabled]="!ProposedForm.valid">Send</button>
+                       
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+              <div style="padding-top: 25px;">
+                <button (click)="cancel()" style="width: 100px;margin-left: 10px;"  class="btn btn-danger">Cancel</button>
+                </div>
+          </div>
+      </div>
+
+      
+    </div>
+    </div>
+    
+    
+    <footer class="footer-area section_gap">
+        <div class="container">
+          <div class="row">
+    
+            <div class="col-lg-3 col-md-7 single-footer-widget">
+              <h4 style="margin-left: 10px;">CONTACT US</h4>
+              <table>
+                <tr>
+                  <th>
+                <i class="fa fa-map-marker fa-2x" style="color: white;"></i>
+                  </th>
+                  <th>
+                    <h6 style="color: white;">E-221,
+                      Phase 8B Industrial Area, Mohali,<span style="color: white;font-weight: bold;">Punjab INDIA, 160059</span></h6>
+                </th>
+                </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-phone fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;">+91 98550 78699,+91 172 4008460</h6>
+                  </th>
+               </tr>
+               <tr>
+                 <th>
+                  <i class="fa fa-envelope fa-2x" style="color: white;"></i>
+                 </th>
+                 <th>
+                  <h6 style="color: white;"><a href="www.gmail.com">info@antiersolutions.com</a></h6>
+                 </th>
+               </tr>
+             </table>
+            </div>
+           
+            <div class="col-lg-4 col-md-6 single-footer-widget" style="margin-left:80px;">
+              <h4>NEWSLETTER</h4>
+              <p>You can trust us. we only send promo offers,</p>
+              <div class="form-wrap" id="mc_embed_signup">
+                <form  class="form-inline" #SubscribedForm="ngForm" (ngSubmit)="onSubmitt(SubscribedForm)">
+                  <input class="form-control" id="EMAIL" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''"onblur="this.placeholder = 'Your Email Address '" required="" type="email" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="contactservice.selectedSubscribed.EMAIL"  autocomplete="off" required email>
+                  <span *ngIf="EMAIL.invalid && (EMAIL.dirty || EMAIL.touched)">
+                    </span>
+                  <button class="click-btn btn btn-default" [disabled]="!SubscribedForm.valid">Subscribe</button>
+                  <div style="position: absolute; left: -5000px;">
+                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                  </div>
+                  <div class="info"></div>
+                </form>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-7 single-footer-widget" style="margin-left: 80px;">
+              <h4>ABOUT</h4>
+              <table>
+                <tr>
+                  <td>
+                    <p>For over 10 years, Antier is helping businesses to adopt new technologies to stay ahead of change. Our rigorous research, design thinking-driven approach and unmatched solutions in strategy, consulting, technology and operations create an innovative roadmap to help enterprises worldwide transit from conventional technology platforms to blockchain-driven systems. We are driven by the aim to identify and seize opportunities from disruption to deliver transformational outcomes for a new decentralized digital world.</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          
+          </div>
+    
+          <div class="footer-bottom row align-items-center">
+            <p class="footer-text m-0 col-lg-8 col-md-12">
+              &copy;Copyright 2021 Antier Solutions Pvt. Ltd. | This website is designed <i class="fa fa-heart-o" aria-hidden="true"></i> by <a>Mukul Sharma</a></p>
+            <div class="col-lg-4 col-md-12 footer-social">
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+              <a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a>
+              <a href="https://gmail.com/"><i class="fa fa-google"></i></a>
+              <a href="https://instagram.com/"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+          
+        </div>
+      </footer>
+    
