@@ -32,10 +32,10 @@
           <h6 style="color:red">{{Purposaldata.amount | currency:'INR'}}</h6>
           </div>
           <div class="alert alert-primary" role="alert" *ngIf="!Cancel">
-            {{CancelMessage}}
+            The proposal has been declined by {{CancelMessage}}
           </div>
           <div class="alert alert-primary" role="alert" *ngIf="!flag4">
-            SBI has bided on proposal for {{bidData.amount | currency:'INR'}} & the remaining amount is {{finalAmount | currency: 'INR'}}
+            {{PostPurposaldataParty}} has bided on proposal for {{bidData.amount | currency:'INR'}} & the remaining amount is {{finalAmount | currency: 'INR'}}
           </div>
           <div *ngIf="flag4" class="col-md-6">
             <ng-multiselect-dropdown

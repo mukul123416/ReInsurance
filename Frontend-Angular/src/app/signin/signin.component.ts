@@ -55,11 +55,17 @@ export class SigninComponent implements OnInit {
   onSubmit(form?:NgForm){
     if(form.value.email.includes(this.userService.selectedLogin.role)){
       this.userService.login(form.value);
-      if(form.value.email=="Bank@ICICI.com"){
+      if(form.value.email=="Bank@ICICI.com" && localStorage.getItem("Email")=="User@gmail.com"){
         this.response={flag:true}
         localStorage.setItem("Flag",this.response.flag);
-      }else if(form.value.email=="Bank@SBI.com"){
+      }else if(form.value.email=="Bank@SBI.com" && localStorage.getItem("Email")=="User@gmail.com"){
         this.response={flag:false}
+        localStorage.setItem("Flag",this.response.flag);
+      }else if(form.value.email=="Bank@ICICI.com" && localStorage.getItem("Email")=="User1@gmail.com"){
+        this.response={flag:false}
+        localStorage.setItem("Flag",this.response.flag);
+      }else if(form.value.email=="Bank@SBI.com" && localStorage.getItem("Email")=="User1@gmail.com"){
+        this.response={flag:true}
         localStorage.setItem("Flag",this.response.flag);
       }
       console.log(form.value);

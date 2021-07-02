@@ -19,6 +19,10 @@ export class InsuranceComponent implements OnInit {
 
   PurposalList={};
   Purposaldata:any={};
+  PostPurposaldata:any={};
+  PostPurposaldataParty:String;
+  PostPurposaldataParty1:number;
+  PostPurposaldataParty2:number;
   bidData:any={};
   flag3:boolean;
   flag4:boolean=true;
@@ -30,15 +34,22 @@ export class InsuranceComponent implements OnInit {
   z: number;
   z1: string;
   citrus: string;
-  CancelMessage: string;
-  Cancel: boolean;
+  CancelMessage: String;
+  Cancel: boolean=true;
   response: any={};
   response2: any={};
 
   ngOnInit(): void {
+
     try {
       if (localStorage.getItem("cancelMessage")){
-        this.CancelMessage=localStorage.getItem("cancelMessage");
+
+        this.PostPurposaldata=JSON.parse(localStorage.getItem("PostProposalData"));
+        this.PostPurposaldataParty1=this.PostPurposaldata.otherParty.search("O");
+        this.PostPurposaldataParty2=this.PostPurposaldata.otherParty.search("L");
+        this.PostPurposaldataParty=this.PostPurposaldata.otherParty.slice(this.PostPurposaldataParty1+2,this.PostPurposaldataParty2-1);
+
+        this.CancelMessage=this.PostPurposaldataParty;
         this.Purposaldata=JSON.parse(localStorage.getItem('PurposalData'));
         this.Cancel=false;
         localStorage.removeItem("cancelMessage");
@@ -48,6 +59,12 @@ export class InsuranceComponent implements OnInit {
         this.finalAmount=this.Purposaldata.amount - this.bidData.amount;
         console.log(this.finalAmount);
         this.flag4=false;
+
+        this.PostPurposaldata=JSON.parse(localStorage.getItem("PostProposalData"));
+        this.PostPurposaldataParty1=this.PostPurposaldata.otherParty.search("O");
+        this.PostPurposaldataParty2=this.PostPurposaldata.otherParty.search("L");
+        this.PostPurposaldataParty=this.PostPurposaldata.otherParty.slice(this.PostPurposaldataParty1+2,this.PostPurposaldataParty2-1);
+
       }
     } catch (error) {
       console.log(error);
@@ -107,6 +124,12 @@ export class InsuranceComponent implements OnInit {
         localStorage.setItem("inReviewBar",this.response.flag5);
         this.response2={flag6:false};
         localStorage.setItem("inProgressBar",this.response2.flag6);
+
+        this.PostPurposaldata=JSON.parse(localStorage.getItem("PostProposalData"));
+        this.PostPurposaldataParty1=this.PostPurposaldata.otherParty.search("O");
+        this.PostPurposaldataParty2=this.PostPurposaldata.otherParty.search("L");
+        this.PostPurposaldataParty=this.PostPurposaldata.otherParty.slice(this.PostPurposaldataParty1+2,this.PostPurposaldataParty2-1);
+        
         this.toaster.show('Proposal has been sent successfully!!');
       }
     },

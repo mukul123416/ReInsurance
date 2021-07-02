@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(form?:NgForm) {
     this.router.navigate(['SignIn']);
+    localStorage.setItem("Email",form.value.email);
       this.userService.postUser(form.value).subscribe(res => {
         this.resetForm(form);
         if(res){
